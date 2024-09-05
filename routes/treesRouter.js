@@ -21,7 +21,7 @@ router.post("/create", upload.single("image"), async function (req, res) {
             uses,
         });
 
-        req.flash("success", "product created successfully.");
+        req.flash("success", "Plant details uploaded successfully.");
         res.redirect("/owners/admin");
         req.flash("success", null);
 
