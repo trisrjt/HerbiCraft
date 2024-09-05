@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .gradient-background {
+            background: linear-gradient(300deg, #4af1a3, #a8e063, #89f7fe);
+            background-size: 180% 180%;
+            animation: gradient-animation 18s ease infinite;
+        }
+
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        h5 {
+            text-align: center;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: greenyellow !important;
+        }
+
+        .navbar {
+            background-color: #503d3d;
+
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            transition: all 0.2s;
+        }
+
+        footer {
+            background-color: #503d3d;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .navbar-toggler {
+            background-color: white;
+            /* border: none; */
+        }
+    </style>
+</head>
+
+<body class="gradient-background">
+
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm navedit">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">HerbiCrafters</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/trees"><button class="btn btn-light">Home</button></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/bookmark"><button class="btn btn-light">Bookmarks</button></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile"><img src="/images/profile-home-pic.png"
+                                class="rounded-circle" width="30" alt="User" /></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container mt-5">
+        <!-- Search Form -->
+        <form action="/search/results" method="post">
+            <!-- Search Bar -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <input type="text" class="form-control" name="search" placeholder="Search by tree name..."
+                        aria-label="Search by tree name">
+                </div>
+            </div>
+
+            <!-- Filter Options -->
+            <div class="row mb-4">
+                <!-- Region Filter -->
+                <div class="col-md-6 mt-3">
+                    <label for="regionFilter" class="form-label">Region</label>
+                    <select class="form-select" name="region" id="regionFilter">
+                        <option selected value="All">All</option>
+                        <option value="India">India</option>
+                        <option value="Pakistan">Pakistan</option>
+                        <option value="Sri Lanka">Sri Lanka</option>
+                        <option value="Myanmar">Myanmar</option>
+                        <option value="Thailand">Thailand</option>
+                        <option value="Indonesia">Indonesia</option>
+                        <option value="Kenya">Kenya</option>
+                        <option value="Nigeria">Nigeria</option>
+                        <option value="Ethiopia">Ethiopia</option>
+                        <option value="Ghana">Ghana</option>
+                        <option value="Senegal">Senegal</option>
+                        <option value="Nepal">Nepal</option>
+                    </select>
+                </div>
+
+                <!-- Medicinal Uses Filter -->
+                <div class="col-md-6 mt-3">
+                    <label for="usesFilter" class="form-label">Medicinal Uses</label>
+                    <select class="form-select" name="use" id="usesFilter">
+                        <option selected value="All">All</option>
+                        <option value="Fever">Fever</option>
+                        <option value="Antimalarial">Anti-malarial</option>
+                        <option value="Skin care">Skin Care</option>
+                        <option value="Antibacterial">Anti-bacterial</option>
+                        <option value="Antifungal">Anti-fungal</option>
+                        <option value="Detoxification">Detoxification</option>
+                        <option value="Heart health">Heart health</option>
+                        <option value="Liver health">Liver health</option>
+                        <option value="Wound heal">Wound heal</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Search Button -->
+            <div class="row">
+                <div class="col-12 text-end">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <!-- search result -->
+
+    <div class="container mt-5">
+        <h1>Search Results</h1>
+        <hr />
+        <div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
+            <% if (plants.length> 0) { %>
+                <% plants.forEach(function(plant) { %>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="data:image/jpeg;base64,<%= plant.image.toString('base64') %>" class="card-img-top"
+                                alt="<%= plant.name %>" height="400">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%= plant.name %>
+                                </h5>
+                                <p class="card-text">
+                                    <%= plant.about %>
+                                </p>
+                            </div>
+                            <div class="card-footer text-end">
+                                <a href="/bookmark/<%= plant._id %>"><button
+                                        class="btn btn-outline-primary btn-sm">📑</button></a>
+                                <a href="/plants/<%= plant.name.replace(/\s+/g, '-') %>.html">
+                                    <button class="btn btn-outline-primary btn-sm">More Info</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+                        <% } else { %>
+                            <p>No plants found matching your criteria.</p>
+                            <% } %>
+        </div>
+    </div>
+
+
+    <!-- <footer>
+        <div class="container">
+            <p>&copy; HERBICRAFTERS | All rights reserved</p>
+        </div>
+    </footer> -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

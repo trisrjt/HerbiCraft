@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Herbal Garden - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .gradient-background {
+            background: linear-gradient(300deg, #4af1a3, #a8e063, #89f7fe);
+            background-size: 180% 180%;
+            animation: gradient-animation 18s ease infinite;
+        }
+
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        h5 {
+            text-align: center;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: greenyellow !important;
+        }
+
+        .navbar {
+            background-color: #503d3d;
+
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            transition: all 0.2s;
+        }
+
+        footer {
+            background-color: #503d3d;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .navbar-toggler {
+            background-color: white;
+            border: none;
+            /* Removes the border if you want a clean look */
+        }
+    </style>
+</head>
+
+<body class="gradient-background">
+
+
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm navedit">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">HerbiCrafters</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/trees"><button class="btn btn-light">Home</button></a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/search"><button class="btn btn-light">Search</button></a>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="/images/profile-home-pic.png" class="rounded-circle" width="30" alt="User" />
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                            <li><a class="dropdown-item" href="/bookmark">Bookmarks</a></li>
+                            <li><a class="dropdown-item" href="/users/logout">Logout</a></li>
+                        </ul>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/bookmark"><button class="btn btn-light">Bookmarks</button></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile"><img src="/images/profile-home-pic.png"
+                                class="rounded-circle" width="30" alt="User" /></a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="/logout"><button class="btn btn-danger">Logout</button></a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <% if (success && success.length> 0) { %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <%= success %>
+                <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+        </div>
+        <% } %>
+
+            <% if (info && info.length> 0) { %>
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <%= info %>
+                        <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button> -->
+                </div>
+                <% } %>
+
+                    <% if (error && error.length> 0) { %>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <%= error %>
+                                <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button> -->
+                        </div>
+                        <% } %>
+
+
+                            <!-- Main Content -->
+                            <div class="container mt-5">
+                                <div class="row row-cols-1 row-cols-md-3 g-4">
+
+                                    <% trees.forEach(function(tree) { %>
+                                        <div class="col-md-4">
+                                            <div class="card h-100 shadow-sm">
+                                                <img src="data:image/jpeg;base64,<%= tree.image.toString('base64') %>"
+                                                    class="card-img-top" alt="<%= tree.name %>" height="400">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">
+                                                        <%= tree.name %>
+                                                    </h5>
+                                                    <p class="card-text">
+                                                        <%= tree.about %>
+                                                            <!-- Display first use as a small description -->
+                                                    </p>
+                                                </div>
+
+                                                <div class="card-footer text-end">
+                                                    <a href="/bookmark/<%= tree._id %>"><button
+                                                            class="btn btn-outline-primary btn-sm">📑</button></a>
+                                                    <a href="/plants/<%= tree.name.replace(/\s+/g, '-') %>.html">
+                                                        <button class="btn btn-outline-primary btn-sm">More
+                                                            Info</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% }) %>
+
+
+                                </div>
+                            </div>
+
+                            <footer>
+                                <div class="container">
+                                    <p>&copy; HERBICRAFTERS | All rights reserved</p>
+                                </div>
+                            </footer>
+
+                            <script
+                                src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+.gradient-background {
+    background: linear-gradient(300deg, #4af1a3, #a8e063, #89f7fe);
+    background-size: 180% 180%;
+    animation: gradient-animation 18s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    padding: 20px 0;            
+}
+
+header h1 {
+    font-family: 'Times New Roman', serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.details-div {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.carousel-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.carousel-container .carousel {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.carousel-container .btn-3d {
+    width: 20%;
+    height: 100%;
+    background-color: #388e3c;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 200px;
+    /* Adjust based on image height */
+    cursor: pointer;
+}
+
+.carousel-container .btn-3d:hover {
+    background-color: #2e7d32;
+}
+
+footer {
+    background-color: #503d3d;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+.hover-effect:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: greenyellow !important;
+}
+
+.navbar{
+    background-color: #503d3d;
+    
+}
