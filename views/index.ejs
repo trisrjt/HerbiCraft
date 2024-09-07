@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,13 +15,31 @@
             justify-content: center;
             align-items: center;
         }
+
         .card {
             width: 100%;
             max-width: 400px;
+            background: rgba(255, 255, 255, 0.8); /* White background with 80% transparency */
+            border-radius: 10px;
+            backdrop-filter: blur(10px); /* Adds a subtle background blur */
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
         }
-        h3{
-            color : green;
+
+        h3 {
+            color: green;
             font-weight: 700;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
         }
     </style>
 </head>
@@ -34,13 +53,18 @@
     </div>
 <% } %> -->
 
-<body class="gradient-background">
+<video autoplay loop muted playsinline>
+    <source src="/videos/WhatsApp Video 2024-09-07 at 01.23.32_fd25b75f.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<body>
     <div class="container-fluid h-custom container">
         <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-md-9 col-lg-6 col-xl-6 my-lg-5 py-lg-5">
+            <!-- <div class="col-md-9 col-lg-6 col-xl-6 my-lg-5 py-lg-5">
                 <img src="/images/Cover-page-tree.avif" class="img-fluid" height="600" alt="cover tree">
-            </div>
-            <div class="col-md-8 col-lg-6 col-xl-5 offset-xl-1 my-lg-5 py-lg-5">
+            </div> -->
+            <div class="col-md-10 col-lg-6 col-xl-5 offset-xl-1 my-lg-5 py-lg-5">
                 <div class="card p-4 shadow-lg">
                     <h3 class="text-center mb-4">HerbiCraft</h3>
                     <!-- Nav tabs -->
@@ -58,11 +82,13 @@
                             <form autocomplete="off" action="/users/login" method="post">
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="loginEmail" name="email" placeholder="Enter your email">
+                                    <input type="email" class="form-control" id="loginEmail" name="email"
+                                        placeholder="Enter your email">
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="loginPassword" name="password" placeholder="Enter your password">
+                                    <input type="password" class="form-control" id="loginPassword" name="password"
+                                        placeholder="Enter your password">
                                 </div>
                                 <button type="submit" class="btn btn-success w-100">Login</button>
                             </form>
@@ -71,15 +97,18 @@
                             <form autocomplete="off" action="/users/register" method="post">
                                 <div class="mb-3">
                                     <label for="fullname" class="form-label">Fullname</label>
-                                    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Enter your fullname">
+                                    <input type="text" class="form-control" id="fullname" name="fullname"
+                                        placeholder="Enter your fullname">
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="signupEmail" name="email" placeholder="Enter your email">
+                                    <input type="email" class="form-control" id="signupEmail" name="email"
+                                        placeholder="Enter your email">
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="signupPassword" name="password" placeholder="Enter your password">
+                                    <input type="password" class="form-control" id="signupPassword" name="password"
+                                        placeholder="Enter your password">
                                 </div>
                                 <button type="submit" class="btn btn-primary w-100">Signup</button>
                             </form>
@@ -87,9 +116,9 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center mt-3">
-                    <a href="/owners" class="btn btn-outline-dark">Admin Login</a>
+                    <a href="/owners" class="btn btn-outline-light">Admin Login</a>
                 </div>
-            </div>
+            <!-- </div> -->
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

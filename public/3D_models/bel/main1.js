@@ -28,7 +28,7 @@ scene.add(camera);
 const fontLoader = new FontLoader();
 fontLoader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', (font) => {
   // Array of lines
-  const lines = ['This Plant is known as', 'Tulsi.Also known as' ,'Azadirachta indica'];
+  const lines = ['This Plant is known as', 'Tulsi.Also known as' ,'Withania somnifera'];
 
   // Parameters for text geometry
   const textSize = 0.4;
@@ -119,7 +119,7 @@ scene.add(spotLight);
 
 // Load 3D model (e.g., a plant)
 const loader = new GLTFLoader();
-loader.load('./tree.glb', (gltf) => {
+loader.load('./bel1.glb', (gltf) => {
   const model = gltf.scene;
   model.name = 'plantModel';  // Correctly name the model
 
