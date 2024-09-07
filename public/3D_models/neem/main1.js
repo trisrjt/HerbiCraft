@@ -28,7 +28,7 @@ scene.add(camera);
 const fontLoader = new FontLoader();
 fontLoader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', (font) => {
   // Array of lines
-  const lines = ['This Plant is known as', 'Tulsi.Also known as' ,'Azadirachta indica'];
+  const lines = ['This Plant is known as', 'neem. Also known as' ,'Azadirachta indica'];
 
   // Parameters for text geometry
   const textSize = 0.4;
