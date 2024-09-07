@@ -4,7 +4,7 @@ const config = require("config");
 const dbgr = require("debug")("development:mongoose");
 
 mongoose
-.connect(`${config.get("MONGODB_URI")}/herbal`)
+.connect(`mongodb+srv://shibampandit31:shibam77@herbal.7jryn.mongodb.net/?retryWrites=true&w=majority&appName=Herbal/herbal`)
 .then(function(){
     dbgr("connected");
 })
